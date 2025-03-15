@@ -6,15 +6,12 @@ import { NavLink, useLocation } from 'react-router-dom';
 const Navbar = () => {
 
     const pathName = useLocation()
-    console.log(pathName.pathname)
-
-
 
     const link = <>
         <div className='md:flex text-left items-center gap-12  text-base font-medium'>
-            <NavLink to={'/'} className={pathName.pathname === '/' ? 'text-[#FFFFFF]' : 'text-black'}><li>Home</li></NavLink>
-            <NavLink to={'/statistics'} className={pathName.pathname === '/' ? 'text-[#FFFFFF]' : 'text-black'}><li>Statistics</li></NavLink>
-            <NavLink to={'/dashboard'} className={pathName.pathname === '/' ? 'text-[#FFFFFF]' : 'text-black'}><li>Dashboard</li></NavLink>
+            <NavLink to={'/'} ><li>Home</li></NavLink>
+            <NavLink to={'/statistics'}><li>Statistics</li></NavLink>
+            <NavLink to={'/dashboard'}><li>Dashboard</li></NavLink>
         </div>
     </>
 
@@ -23,7 +20,10 @@ const Navbar = () => {
         <div className='max-w-7xl mx-auto'>
 
 
-            <div className={pathName.pathname === '/' ? "navbar bg-[#9538E2] rounded-4xl" : "navbar bg-[#FFFFFF] rounded-4xl"}>
+            <div className={pathName.pathname === '/' || pathName.pathname === '/Laptop' || pathName.pathname === '/Phone' || pathName.pathname === '/Accessories' || pathName.pathname === '/Smartwatch'
+                ? "navbar bg-[#9538E2] rounded-4xl"
+                : "navbar bg-[#FFFFFF] rounded-4xl"}>
+
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost md:hidden">
@@ -32,14 +32,18 @@ const Navbar = () => {
                         <ul
                             tabIndex={0}
                             className="menu menu-sm dropdown-content bg-amber-400 rounded-box z-1 mt-3 shadow">
-                            {link}
+                            <div className={pathName.pathname === '/' ? 'text-[#FFFFFF]' : 'text-black'}>
+                                {link}
+                            </div>
                         </ul>
                     </div>
                     <a className={pathName.pathname === '/' ? "text-[#FFFFFF] text-xl font-bold md:flex hidden " : "text-black text-xl font-bold md:flex hidden "}>Gadget Heaven</a>
                 </div>
                 <div className="navbar-center hidden md:flex">
                     <ul className="menu menu-horizontal px-1">
-                        {link}
+                        <div className={pathName.pathname === '/' ? 'text-[#FFFFFF]' : 'text-black'}>
+                            {link}
+                        </div>
                     </ul>
                 </div>
                 <div className="navbar-end space-x-3 ">

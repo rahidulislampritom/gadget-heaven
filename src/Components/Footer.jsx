@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <div className='max-w-7xl mx-auto bg-[#FFFFFF]'>
+        <div className='max-w-7xl mx-auto bg-[#FFFFFF] pt-14'>
 
             <div className='text-center space-y-3 border-b border-[#09080F1A] pb-8'>
                 <h2 className='text-[#09080F] text-3xl font-bold' >Gadget Heaven</h2>
