@@ -1,5 +1,14 @@
 import React from 'react';
-import { useLoaderData, useParams } from 'react-router-dom';
+import { NavLink, useLoaderData, useParams } from 'react-router-dom';
+import { FaRegStar } from "react-icons/fa";
+import { FaRegStarHalf } from "react-icons/fa";
+import ReactStars from 'react-stars';
+import { IoCartOutline, IoStar, IoStarHalf } from 'react-icons/io5';
+import { IoMdHeartEmpty } from 'react-icons/io';
+import { addCardToLS, addWishListLS } from '../Utility/addToDb';
+
+
+
 
 const CartDetails = () => {
     const { cardId } = useParams();
@@ -10,6 +19,7 @@ const CartDetails = () => {
 
     const
         {
+            product_id,
             product_title,
             product_image,
             price,
@@ -18,9 +28,21 @@ const CartDetails = () => {
             Specification,
             availability
         }
-            = cardDetails
+            = cardDetails;
 
-    console.log(cardDetails)
+
+    // here star working for add product to cart components  using localStore
+    const handleAddToCard = (id) => {
+        addCardToLS(id);
+    }
+    // here star working for add product to wishlist components  using localStore
+
+    const handleAddToWishList = (id) => {
+        addWishListLS(id)
+        // console.log(id)
+    }
+
+
     return (
         <div className='bg-[#F7F7F7] lg:pb-56'>
 
@@ -35,12 +57,12 @@ const CartDetails = () => {
             <div className=''>
 
             </div>
-            <div className='max-w-5xl mx-auto relative'>
+            <div className='max-w-5xl mx-auto relative lg:pt-12'>
 
-                <div className='flex w-full lg:absolute -bottom-42 bg-[#F7F7F7] rounded-3xl'>
+                <div className='flex w-full lg:absolute -bottom-58 bg-[#F7F7F7] rounded-3xl pb-24'>
 
                     <div className="hero bg-[#FFFFFF]  rounded-3xl">
-                        <div className="hero-content flex-col lg:flex-row lg:p-20 ">
+                        <div className="hero-content flex-col lg:flex-row lg:p-20 lg:gap-8">
                             <div className='w-1/2' >
                                 <img
                                     src={product_image}
@@ -54,7 +76,7 @@ const CartDetails = () => {
                                 </h1>
                                 <div className={`${availability === true
                                     ? 'text-[#309C08]  border border-[#309c08] bg-[#309C081A] w-fit px-2 py-1 rounded-4xl'
-                                    : 'text-red-900  border border-red-500 bg-red-300 w-fit px-2 py-1 rounded-4xl'
+                                    : 'text-warning  border border-[#309c08] bg-[#309C081A] w-fit px-2 py-1 rounded-4xl'
                                     }`}>
                                     {
                                         availability === true
@@ -72,15 +94,56 @@ const CartDetails = () => {
                                     </ol>
                                 </div>
                                 <h2 className='text-[#09080F] text-lg font-bold'>Rating</h2>
-                                <div>
-                                    <div>
-
+                                <div className='flex items-center gap-4'>
+                                    <div className='flex'>
+                                        {
+                                            [...Array(5)].map((_, index) => (
+                                                <span key={index}>
+                                                    {
+                                                        index < Math.floor(rating)
+                                                            ? (<IoStar className='text-xl text-yellow-400' />)
+                                                            : index < rating
+                                                                ? (<IoStarHalf className='text-xl text-yellow-400' />)
+                                                                : ('')
+                                                    }
+                                                </span>
+                                            ))
+                                        }
                                     </div>
-                                    <h1 className=" text-sm font-normal bg-[#09080F0D] w-fit px-3.5 py-1.5 rounded-4xl">{rating}</h1>
+
+                                    {/* using react stars  */}
+                                    {/* <div>
+                                        <ReactStars
+                                            count={5}
+                                            value={rating}>
+
+                                        </ReactStars>
+                                    </div> */}
+                                    <div>
+                                        <h1 className=" text-sm font-normal bg-[#09080F0D] w-fit px-3.5 py-1.5 rounded-4xl">{rating}</h1>
+                                    </div>
+
                                 </div>
 
 
-                                <button className="btn btn-primary">Get Started</button>
+                                <div className='flex items-center gap-4 pt-2'>
+
+                                    <NavLink>
+                                        <button onClick={() => handleAddToCard(product_id)} className="flex  items-center gap-2 text-[#FFFFFF] text-lg font-bold bg-[#9538E2] px-6 py-3 rounded-4xl">Add To Card  <span><IoCartOutline className='text-xl' /></span></button>
+                                    </NavLink>
+
+
+                                    <div className='border border-[#0b0b0b1a] rounded-full w-fit  bg-white'>
+                                        <NavLink>
+                                            <button onClick={() => handleAddToWishList(product_id)} className="btn btn-ghost btn-circle">
+                                                <div className="indicator">
+                                                    < IoMdHeartEmpty className='text-xl' />
+                                                </div>
+                                            </button>
+                                        </NavLink>
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
                     </div>

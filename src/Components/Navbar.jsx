@@ -63,16 +63,20 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end space-x-3 ">
                     <div className='border border-[#0b0b0b1a] rounded-full  bg-[#FFFFFF]'>
-                        <button className="btn btn-ghost btn-circle">
-                            <IoCartOutline className='text-xl' />
-                        </button>
+                        <NavLink to={'/dashboard'}>
+                            <button className="btn btn-ghost btn-circle">
+                                <IoCartOutline className='text-xl' />
+                            </button>
+                        </NavLink>
                     </div>
                     <div className='border border-[#0b0b0b1a] rounded-full  bg-white'>
-                        <button className="btn btn-ghost btn-circle">
-                            <div className="indicator">
-                                < IoMdHeartEmpty className='text-xl' />
-                            </div>
-                        </button>
+                        <NavLink to={'/dashboard'}>
+                            <button className="btn btn-ghost btn-circle">
+                                <div className="indicator">
+                                    < IoMdHeartEmpty className='text-xl' />
+                                </div>
+                            </button>
+                        </NavLink>
                     </div>
 
                 </div>
