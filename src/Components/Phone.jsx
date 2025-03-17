@@ -14,7 +14,6 @@ const Phone = () => {
     // console.log(phoneData)
     return (
         <div>
-            <h2>phone</h2>
             <div className='text-center'>
 
                 <div className='md:grid grid-cols-3 gap-6  bg-[#F7F7F7] p-6'>

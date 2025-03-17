@@ -11,7 +11,7 @@ const MainLayout = () => {
 
     return (
         <div>
-            <div className={locationNav.pathname === '/' || locationNav.pathname === '/Laptop' || locationNav.pathname === '/Phone' || locationNav.pathname === '/Accessories' || locationNav.pathname==='/Smartwatch'
+            <div className={locationNav.pathname === '/' || locationNav.pathname === '/Laptop' || locationNav.pathname === '/Phone' || locationNav.pathname === '/Accessories' || locationNav.pathname === '/Smartwatch'
                 ? 'max-w-[1540px] mx-auto text-center bg-[#9538E2]  border-8 border-b-0 border-[#F6F6F6] rounded-4xl rounded-b-none'
                 : 'max-w-[1540px] mx-auto text-center bg-white border-8 border-b-0 border-white   rounded-4xl rounded-b-none'}>
                 <Navbar></Navbar>

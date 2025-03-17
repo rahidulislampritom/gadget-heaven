@@ -63,6 +63,7 @@ const router = createBrowserRouter([
 
             {
                 path: '/statistics',
+                loader: () => fetch('../gadgetHeavenData.json'),
                 element: <Statistics></Statistics>,
 
             },

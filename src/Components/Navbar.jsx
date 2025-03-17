@@ -9,9 +9,24 @@ const Navbar = () => {
 
     const link = <>
         <div className='md:flex text-left items-center gap-12  text-base font-medium'>
-            <NavLink to={'/'} ><li>Home</li></NavLink>
-            <NavLink to={'/statistics'}><li>Statistics</li></NavLink>
-            <NavLink to={'/dashboard'}><li>Dashboard</li></NavLink>
+            <NavLink
+                to={'/'}
+                className={({ isActive }) => isActive
+                    ? 'underline'
+                    : ''} >
+                <li>Home</li></NavLink>
+            <NavLink
+                to={'/statistics'}
+                className={({ isActive }) => isActive
+                    ? 'underline'
+                    : ''}>
+                <li>Statistics</li></NavLink>
+            <NavLink
+                to={'/dashboard'}
+                className={({ isActive }) => isActive
+                    ? 'underline'
+                    : ''}>
+                <li>Dashboard</li></NavLink>
         </div>
     </>
 

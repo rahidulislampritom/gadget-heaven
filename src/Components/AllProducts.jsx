@@ -13,7 +13,7 @@ const AllProducts = () => {
 
 
             <div className='md:flex gap-6'>
-              
+
 
                 <div className='md:grid grid-cols-3 gap-6'>
                     {

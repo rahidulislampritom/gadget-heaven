@@ -1,15 +1,17 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLoaderData } from 'react-router-dom';
 import ProductStatistics from '../Components/ProductStatistics';
-import CartDetails from '../Components/ProductDetails';
 
 
 const Statistics = () => {
+
+const allData =useLoaderData();
+
     return (
-        <div className='bg-[#9538E2]'>
-           
-           {/* <ProductStatistics></ProductStatistics> */}
-          
+        <div className=''>
+
+            <ProductStatistics allData={allData}></ProductStatistics>
+
         </div>
     );
 };

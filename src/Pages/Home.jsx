@@ -18,8 +18,13 @@ const Home = () => {
             <div className='lg:max-w-[1062px] text-center mx-auto'>
                 <Hero></Hero>
             </div>
+            
+            <div className='text-center pb-4 lg:pb-12  pt-10 text-xl lg:text-4xl font-bold'>
+                <h2>Explore Cutting-Edge Gadgets</h2>
+            </div>
+
             {/* category dynamic  button and outlet start  */}
-            <div className='md:text-center md:max-w-7xl mx-auto bg-[#F7F7F7]  p-3 md:p-6 border '>
+            <div className='md:text-center md:max-w-7xl mx-auto bg-[#F7F7F7]  p-3 md:p-6 border border-[#D9D9D9] rounded-2xl'>
 
                 <div className='lg:flex gap-6'>
                     <div className='flex flex-col gap-3 bg-white h-fit p-3 rounded-2xl'>

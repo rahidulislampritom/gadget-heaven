@@ -15,11 +15,12 @@ const CartDetails = () => {
             price,
             description,
             rating,
-            Specification
+            Specification,
+            availability
         }
             = cardDetails
 
-
+    console.log(cardDetails)
     return (
         <div className='bg-[#F7F7F7] lg:pb-56'>
 
@@ -36,27 +37,49 @@ const CartDetails = () => {
             </div>
             <div className='max-w-5xl mx-auto relative'>
 
-                <div className='flex w-full lg:absolute -bottom-28 border'>
+                <div className='flex w-full lg:absolute -bottom-42 bg-[#F7F7F7] rounded-3xl'>
 
-                    <div className="hero bg-base-200 ">
-                        <div className="hero-content flex-col lg:flex-row  border lg:p-20 ">
-                            <div className='flex-1'>
+                    <div className="hero bg-[#FFFFFF]  rounded-3xl">
+                        <div className="hero-content flex-col lg:flex-row lg:p-20 ">
+                            <div className='w-1/2' >
                                 <img
                                     src={product_image}
                                     className="rounded-lg shadow-2xl h-3/4" />
                             </div>
-                            <div className='flex-2 md:space-y-2'>
+                            <div className=' md:space-y-2'>
                                 <h1 className="md:text-xl font-bold">{product_title}</h1>
-                                <h1 className="md:text-xl font-normal">{price}</h1>
-                                <h1 className="md:text-xl font-normal">{description}</h1>
-
-                                <h1 className="text-xl font-normal">{rating}</h1>
-
-                                <div className='space-y-2'>
+                                <h1 className="md:text-xl font-normal">
+                                    <span className='text-[20px] font-semibold'>Price: </span>
+                                    ${price}
+                                </h1>
+                                <div className={`${availability === true
+                                    ? 'text-[#309C08]  border border-[#309c08] bg-[#309C081A] w-fit px-2 py-1 rounded-4xl'
+                                    : 'text-red-900  border border-red-500 bg-red-300 w-fit px-2 py-1 rounded-4xl'
+                                    }`}>
                                     {
-                                        Specification.map(d => <h2>{d}</h2>)
+                                        availability === true
+                                            ? 'In Stock'
+                                            : 'Out of Stock'
                                     }
                                 </div>
+                                <h1 className="text-[#09080F99] md:text-xl font-normal">{description}</h1>
+                                <div className='space-y-2'>
+                                    <h2 className='text-[#09080F] text-lg font-bold'>Specification:</h2>
+                                    <ol className='list-decimal pl-5'>
+                                        {
+                                            Specification.map((d, idx) => <li key={idx} className='text-[#09080F99] text-lg font-normal'>{d}</li>)
+                                        }
+                                    </ol>
+                                </div>
+                                <h2 className='text-[#09080F] text-lg font-bold'>Rating</h2>
+                                <div>
+                                    <div>
+
+                                    </div>
+                                    <h1 className=" text-sm font-normal bg-[#09080F0D] w-fit px-3.5 py-1.5 rounded-4xl">{rating}</h1>
+                                </div>
+
+
                                 <button className="btn btn-primary">Get Started</button>
                             </div>
                         </div>
